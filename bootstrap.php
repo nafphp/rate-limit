@@ -18,6 +18,6 @@ if (!$container->has(PdoLimiter::class)) {
 
 guard()->register(
     'rateLimit',
-    static fn(string $key, int $limit, int $windowSeconds, ?int $now = null): array =>
-        $container->get(PdoLimiter::class)->consume($key, $limit, $windowSeconds, $now),
+    static fn(string $key, int $limit, int $windowSeconds, ?int $now = null): array
+        => $container->get(PdoLimiter::class)->consume($key, $limit, $windowSeconds, $now),
 );

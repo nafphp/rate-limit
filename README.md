@@ -53,3 +53,10 @@ limits and responses. A guard call does not itself authenticate the caller.
 Run `composer test` and `composer validate --strict`. Tests require `pdo_sqlite` and use only
 in-memory counters. `NAF_TEST_AUTOLOAD=/path/to/verified/host/vendor/autoload.php composer test`
 can exercise the same contract against an installed integration host.
+
+## PHP code style
+
+Source, tests and PHP templates follow the shared [NAF code style](https://github.com/nafphp/docs/blob/main/CODE_STYLE.md)
+(PER Coding Style 3.0 with the Nafinity readability rules). After `composer install`, run
+`composer style:check` to verify formatting or `composer style:fix` to apply it. The formatter
+is a development dependency. Review template output and run the package checks after changes.

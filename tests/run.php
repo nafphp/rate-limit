@@ -56,7 +56,7 @@ check(!$blocked['allowed'] && $blocked['remaining'] === 0 && $blocked['retry_aft
 check(guard()->rateLimit('guard', 2, 60, 180)['allowed'], 'guard window expires');
 
 // A host override must also take effect after the default limiter was resolved.
-$otherPdo = new PDO('sqlite::memory:');
+$otherPdo     = new PDO('sqlite::memory:');
 $otherLimiter = new PdoLimiter($otherPdo);
 $otherLimiter->install();
 $container->set(PdoLimiter::class, $otherLimiter);
@@ -67,6 +67,7 @@ check((int) $otherPdo->query('SELECT COUNT(*) FROM naf_rate_limits')->fetchColum
 require dirname(__DIR__) . '/bootstrap.php';
 check($container->get(PdoLimiter::class) === $otherLimiter, 'existing limiter binding retained');
 $otherPdo->beginTransaction();
+
 try {
     guard()->rateLimit('nested', 1, 60, 120);
     throw new RuntimeException('Guard swallowed transaction protection');
