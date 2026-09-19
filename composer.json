@@ -1,29 +1,35 @@
 {
-  "name": "naf/rate-limit",
-  "description": "Atomic PDO fixed-window rate limits for NAF hosts.",
-  "type": "naf-plugin",
-  "license": "MIT",
-  "require": {
-    "php": ">=8.3",
-    "ext-pdo": "*",
-    "naf/framework": "^0.2"
-  },
-  "autoload": {
-    "psr-4": {
-      "Naf\\RateLimit\\": "src/"
+    "name": "naf/rate-limit",
+    "description": "Atomic PDO fixed-window rate limits for NAF hosts.",
+    "type": "naf-plugin",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.3",
+        "ext-pdo": "*",
+        "naf/framework": "^0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naf\\RateLimit\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit --colors=always",
+        "style:check": "@php vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "style:fix": "@php vendor/bin/php-cs-fixer fix"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "3.95.25",
+        "phpunit/phpunit": "^12.1"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.0"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     }
-  },
-  "scripts": {
-    "test": "@php tests/run.php",
-    "style:check": "@php vendor/bin/php-cs-fixer fix --dry-run --diff",
-    "style:fix": "@php vendor/bin/php-cs-fixer fix"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "3.95.25"
-  },
-  "config": {
-    "platform": {
-      "php": "8.3.0"
-    }
-  }
 }
